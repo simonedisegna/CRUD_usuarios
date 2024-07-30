@@ -12,6 +12,9 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap4.min.css">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/css/app.css">
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" href="/img/favecon.ico" type="image/x-icon">
 </head>
 
 <body>
@@ -19,19 +22,30 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
             <a class="navbar-brand mx-auto" href="#">
-                <img src="/img/Logo_TesteAPI.png" alt="Logo" style="height: 50px;">
+                <img src="/img/Logo_TesteAPI.png" alt="Seu Logo" style="height: 80px;">
             </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Início</a>
+                <ul class="navbar-nav ml-auto">
+                    @guest
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('login') }}">Login</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Sobre</a>
+                        <a class="nav-link" href="{{ route('registro') }}">Registrar</a>
                     </li>
+                    @else
+                    <li class="nav-item">
+                        <span class="navbar-text">Bem-vindo, {{ Session::get('usuario_nome') }}</span>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            Sair
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    </li>
+                    @endguest
                 </ul>
             </div>
         </div>
