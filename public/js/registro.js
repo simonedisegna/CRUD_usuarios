@@ -88,5 +88,37 @@ $(document).ready(function() {
         }
     });
 
+    $('#toggleSenha').click(function() {
+        let senhaField = $('#senha');
+        let senhaFieldType = senhaField.attr('type');
+        if (senhaFieldType == 'password') {
+            senhaField.attr('type', 'text');
+            $(this).removeClass('fa-eye').addClass('fa-eye-slash');
+        } else {
+            senhaField.attr('type', 'password');
+            $(this).removeClass('fa-eye-slash').addClass('fa-eye');
+        }
+    });
+
+    $('#toggleSenhaConfirmation').click(function() {
+        let senhaConfirmationField = $('#senha_confirmation');
+        let senhaConfirmationFieldType = senhaConfirmationField.attr('type');
+        if (senhaConfirmationFieldType == 'password') {
+            senhaConfirmationField.attr('type', 'text');
+            $(this).removeClass('fa-eye').addClass('fa-eye-slash');
+        } else {
+            senhaConfirmationField.attr('type', 'password');
+            $(this).removeClass('fa-eye-slash').addClass('fa-eye');
+        }
+    });
+
+    $('#senha_confirmation').on('change', function() {
+        if ($('#senha').val() != $(this).val()) {
+            $(this).after('<div class="text-danger">As senhas não coincidem.</div>');
+        } else {
+            $(this).next('.text-danger').remove();
+        }
+    });
+
 
 });

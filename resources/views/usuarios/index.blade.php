@@ -5,7 +5,7 @@
 @section('content')
 <div class="container">
     <h1>Lista de Usuários</h1>
-    <button onclick="teste()" class="btn btn-primary mb-3">Clique aqui</button>
+    <!--<button onclick="teste()" class="btn btn-primary mb-3">Clique aqui</button>-->
     <a href="{{ route('usuarios.create') }}" class="btn btn-success mb-3">Adicionar Usuário</a>
     <table id="usuariosListagem" class="table table-striped table-bordered">
         <thead>

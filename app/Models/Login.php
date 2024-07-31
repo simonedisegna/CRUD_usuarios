@@ -19,6 +19,11 @@ class Login extends Authenticatable
         'senha', 'remember_token',
     ];
 
+    public function usuarios()
+    {
+        return $this->belongsToMany(Usuario::class, 'login_usuario');
+    }
+
     protected $casts = [
         'email_verificado_em' => 'datetime',
     ];

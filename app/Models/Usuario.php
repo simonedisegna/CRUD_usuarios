@@ -3,22 +3,28 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Usuario extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory;
 
     protected $fillable = [
-        'nome', 'email', 'telefone','celular', 'cpf'
+        'nome',
+        'email',
+        'telefone',
+        'celular',
+        'cpf',
     ];
 
-    public function enderecos()
+    public function endereco()
     {
-        return $this->hasMany(Endereco::class);
+        return $this->hasOne(Endereco::class);
+    }
+
+    public function login()
+    {
+        return $this->hasOneThrough(Login::class, LoginUsuario::class, 'usuario_id', 'id', 'id', 'login_id');
     }
 }
-
-
 
 ?>
