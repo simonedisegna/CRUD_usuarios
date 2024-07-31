@@ -2,6 +2,8 @@
 ## Visão Geral
 Este é um projeto de um sistema CRUD (Create, Read, Update, Delete) desenvolvido em Laravel. O sistema permite gerenciar usuários, seus endereços e informações de login, com autenticação de usuário.
 
+<img src="https://raw.githubusercontent.com/simonedisegna/CRUD_usuarios/main/public/img/tela.jpg" alt="Disegna" width="400">
+
 ## Requisitos
 - **PHP >= 8.0**
 - **Composer**
